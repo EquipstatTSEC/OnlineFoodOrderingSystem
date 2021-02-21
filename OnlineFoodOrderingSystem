@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-02-21T11:34:46.268Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36" etag="wHX5FjwDtFQAg_D3Y0s5" version="14.4.2" type="github">
+<mxfile host="app.diagrams.net" modified="2021-02-21T16:19:18.719Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36" etag="ZrFsw_2L52_DQjLuohXQ" version="14.4.2" type="github">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
-    <mxGraphModel dx="2755" dy="1695" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
+    <mxGraphModel dx="5784" dy="2388" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -706,11 +706,11 @@
         <mxCell id="vnRGmItxrlyvSxSqZlfd-6" value="m" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" parent="1" vertex="1">
           <mxGeometry x="630" y="1150" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="lTMUpUpvsJ10iLCKibel-3" value="&lt;h1&gt;&lt;font style=&quot;font-size: 72px&quot; face=&quot;Georgia&quot;&gt;Online Food Ordering System&lt;/font&gt;&lt;/h1&gt;" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" parent="1" vertex="1">
-          <mxGeometry x="-530" y="-350" width="730" height="280" as="geometry" />
+        <mxCell id="lTMUpUpvsJ10iLCKibel-3" value="&lt;h1&gt;&lt;font style=&quot;font-size: 72px&quot; face=&quot;Verdana&quot;&gt;Online Food Ordering System&lt;/font&gt;&lt;/h1&gt;" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" parent="1" vertex="1">
+          <mxGeometry x="-800" y="-390" width="1540" height="220" as="geometry" />
         </mxCell>
         <mxCell id="lTMUpUpvsJ10iLCKibel-4" value="&lt;div style=&quot;text-align: left ; font-size: 30px&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;font face=&quot;Georgia&quot; style=&quot;font-size: 30px&quot;&gt;Dheeraj Lalwani: 1902085&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left ; font-size: 30px&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;font face=&quot;Georgia&quot; style=&quot;font-size: 30px&quot;&gt;Chirag Lulla: 1902086&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left ; font-size: 30px&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;font face=&quot;Georgia&quot; style=&quot;font-size: 30px&quot;&gt;Roshni Kukreja: 1902083&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="-700" y="-90" width="470" height="200" as="geometry" />
+          <mxGeometry x="-590" y="-170" width="470" height="200" as="geometry" />
         </mxCell>
         <mxCell id="deus5Fyrgq64Vt_PRccO-2" value="order_items" style="whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
           <mxGeometry x="1740" y="-20" width="100" height="40" as="geometry" />
