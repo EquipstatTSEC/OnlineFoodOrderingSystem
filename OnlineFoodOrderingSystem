@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-02-21T10:24:31.459Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36 Edg/88.0.705.74" etag="2Jrac2hbVyJCX5gez3yS" version="14.3.2" type="github">
+<mxfile host="app.diagrams.net" modified="2021-02-21T10:52:50.433Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36 Edg/88.0.705.74" etag="v_1jX2I41JEn01hdhBW4" version="14.3.2" type="github">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
-    <mxGraphModel dx="1900" dy="835" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
+    <mxGraphModel dx="4100" dy="1705" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -733,7 +733,7 @@
         <mxCell id="lTMUpUpvsJ10iLCKibel-4" value="&lt;div style=&quot;text-align: left ; font-size: 30px&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;font face=&quot;Georgia&quot; style=&quot;font-size: 30px&quot;&gt;Dheeraj Lalwani: 1902085&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left ; font-size: 30px&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;font face=&quot;Georgia&quot; style=&quot;font-size: 30px&quot;&gt;Chirag Lulla: 1902086&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left ; font-size: 30px&quot;&gt;&lt;span&gt;&lt;b&gt;&lt;font face=&quot;Georgia&quot; style=&quot;font-size: 30px&quot;&gt;Roshni Kukreja: 1902083&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="-700" y="-90" width="470" height="200" as="geometry" />
         </mxCell>
-        <mxCell id="deus5Fyrgq64Vt_PRccO-2" value="food_item" style="whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+        <mxCell id="deus5Fyrgq64Vt_PRccO-2" value="order_items" style="whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
           <mxGeometry x="1740" y="-20" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="deus5Fyrgq64Vt_PRccO-5" value="has" style="shape=rhombus;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
@@ -751,7 +751,7 @@
             <mxPoint x="1660" y="80" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="deus5Fyrgq64Vt_PRccO-10" value="m" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" parent="1" vertex="1">
+        <mxCell id="deus5Fyrgq64Vt_PRccO-10" value="1" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" parent="1" vertex="1">
           <mxGeometry x="1230" width="100" height="40" as="geometry" />
         </mxCell>
         <mxCell id="deus5Fyrgq64Vt_PRccO-12" value="m" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" parent="1" vertex="1">
