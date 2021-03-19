@@ -28,3 +28,28 @@ CREATE TABLE ticket (
    PRIMARY KEY(id),
    FOREIGN KEY(user_id) REFERENCES user_detail(id)
 )
+
+
+CREATE TABLE user_order (
+    id integer NOT NULL,
+    user_id integer,
+    order_description varchar(225),
+    order_date varchar(8),
+    payment_type varchar(15),
+    order_status varchar(10),
+    total integer,
+    FOREIGN KEY(user_id) REFERENCES user_detail(id)
+)
+
+ALTER TABLE user_order 
+ADD PRIMARY KEY (id)
+
+CREATE TABLE owner_detail (
+    id integer NOT NULL,
+    fname varchar(50),
+    mname varchar(50),
+    lname varchar(50),
+    contact varchar(15),
+    email varchar(50),
+    PRIMARY KEY(id)
+)
