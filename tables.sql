@@ -113,3 +113,23 @@ CREATE TABLE item_ingredients (
   FOREIGN KEY(item_id) REFERENCES item(id),
   PRIMARY KEY(id)
 )
+
+-- ==========================================
+
+ALTER TABLE restaurant 
+MODIFY bank_branch varchar(50)
+
+DROP TABLE restaurant_owners
+
+CREATE TABLE restaurant_owners (
+  id integer NOT NULL,
+  owner_id integer,
+  restaurant_id integer,
+  PRIMARY KEY(id),
+  FOREIGN KEY(owner_id) REFERENCES owner_detail(id),
+  FOREIGN KEY(restaurant_id) REFERENCES restaurant(id)
+)
+
+
+ALTER TABLE restaurant 
+RENAME COLUMN rest_name TO restaurant_name
