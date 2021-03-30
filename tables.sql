@@ -200,3 +200,28 @@ VALUES
 	(3, 'Food was very Cold', 3)
 
 select * from ticket
+
+
+
+UPDATE ticket
+SET ticket_description = 'late delivery', ticket_status = 'pending', ticket_type = 'greivance', ticket_date = '20210903'
+WHERE user_id = 2
+
+UPDATE ticket
+SET ticket_subject = 'Food was very good', ticket_description = 'fast delivery', ticket_status = 'complete', ticket_type = 'feedback', ticket_date = '20210910'
+WHERE user_id = 1
+
+UPDATE ticket
+SET ticket_subject = 'packing was very bad', ticket_description = 'packing left open', ticket_status = 'pending', ticket_type = 'greivance', ticket_date = '20210915'
+WHERE user_id = 3
+
+
+DELETE FROM ticket
+WHERE user_id = 3
+
+select * from ticket
+
+DELETE FROM ticket
+
+select * from ticket
+
