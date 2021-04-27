@@ -170,58 +170,209 @@ VALUES
 		'Mandir',
 		0
 	)
-
-
-
-
-
-
-
 INSERT INTO
 	ticket(id, ticket_subject, user_id)
 VALUES
 	(1, 'Food was very Cold', 1)
-
-
-
-
-
-
-
-
-INSERT ALL
-INTO 
-	ticket(id, ticket_subject, user_id)
+INSERT
+	ALL INTO ticket(id, ticket_subject, user_id)
 VALUES
-	(2, 'Food was very Bad', 2)
-INTO 
-	ticket(id, ticket_subject, user_id)
+	(2, 'Food was very Bad', 2) INTO ticket(id, ticket_subject, user_id)
 VALUES
 	(3, 'Food was very Cold', 3)
-
-select * from ticket
-
-
-
-UPDATE ticket
-SET ticket_description = 'late delivery', ticket_status = 'pending', ticket_type = 'greivance', ticket_date = '20210903'
-WHERE user_id = 2
-
-UPDATE ticket
-SET ticket_subject = 'Food was very good', ticket_description = 'fast delivery', ticket_status = 'complete', ticket_type = 'feedback', ticket_date = '20210910'
-WHERE user_id = 1
-
-UPDATE ticket
-SET ticket_subject = 'packing was very bad', ticket_description = 'packing left open', ticket_status = 'pending', ticket_type = 'greivance', ticket_date = '20210915'
-WHERE user_id = 3
-
-
-DELETE FROM ticket
-WHERE user_id = 3
-
-select * from ticket
-
-DELETE FROM ticket
-
-select * from ticket
-
+select
+	*
+from
+	ticket
+UPDATE
+	ticket
+SET
+	ticket_description = 'late delivery',
+	ticket_status = 'pending',
+	ticket_type = 'greivance',
+	ticket_date = '20210903'
+WHERE
+	user_id = 2
+UPDATE
+	ticket
+SET
+	ticket_subject = 'Food was very good',
+	ticket_description = 'fast delivery',
+	ticket_status = 'complete',
+	ticket_type = 'feedback',
+	ticket_date = '20210910'
+WHERE
+	user_id = 1
+UPDATE
+	ticket
+SET
+	ticket_subject = 'packing was very bad',
+	ticket_description = 'packing left open',
+	ticket_status = 'pending',
+	ticket_type = 'greivance',
+	ticket_date = '20210915'
+WHERE
+	user_id = 3
+DELETE FROM
+	ticket
+WHERE
+	user_id = 3
+select
+	*
+from
+	ticket
+DELETE FROM
+	ticket
+select
+	*
+from
+	ticket
+INSERT INTO
+	ticket(id, ticket_subject, user_id)
+VALUES
+	(1, 'Food was very Cold', 1)
+INSERT
+	ALL INTO ticket(id, ticket_subject, user_id)
+VALUES
+	(2, 'Food was very Bad', 2) INTO ticket(id, ticket_subject, user_id)
+VALUES
+	(3, 'Food was very Cold', 3)
+select
+	*
+from
+	ticket
+UPDATE
+	ticket
+SET
+	ticket_description = 'late delivery',
+	ticket_status = 'pending',
+	ticket_type = 'greivance',
+	ticket_date = '20210903'
+WHERE
+	user_id = 2
+UPDATE
+	ticket
+SET
+	ticket_subject = 'Food was very good',
+	ticket_description = 'fast delivery',
+	ticket_status = 'complete',
+	ticket_type = 'feedback',
+	ticket_date = '20210910'
+WHERE
+	user_id = 1
+UPDATE
+	ticket
+SET
+	ticket_subject = 'packing was very bad',
+	ticket_description = 'packing left open',
+	ticket_status = 'pending',
+	ticket_type = 'greivance',
+	ticket_date = '20210915'
+WHERE
+	user_id = 3
+select
+	*
+from
+	ticket
+ALTER TABLE
+	ticket DROP PRIMARY KEY
+ALTER TABLE
+	ticket
+ADD
+	CONSTRAINT id PRIMARY KEY (id)
+INSERT INTO
+	restaurant
+VALUES
+	(
+		1,
+		'Aandmandkhatola',
+		'48594859',
+		'aandmandkhatola@something.com',
+		'BAQY723829',
+		'95305905109249',
+		'ExampleCertificate1',
+		'HealthTradeLicense1',
+		'R.V. Road',
+		'Albela nagar',
+		'Mumbai',
+		400024,
+		'Maharashtra',
+		'Milkyway',
+		'PMC',
+		'BEOS93024021',
+		'Takatakawadi',
+		'PMJC3042'
+	)
+INSERT INTO
+	restaurant
+VALUES
+	(
+		2,
+		'Tuskins',
+		'48594859',
+		'tuskins@something.com',
+		'GAQY723829',
+		'23505905109249',
+		'ExampleCertificate2',
+		'HealthTradeLicense2',
+		'K.V. Road',
+		'Chand nagar',
+		'Mumbai',
+		400022,
+		'Maharashtra',
+		'Milkyway',
+		'UBS',
+		'UBS93024021',
+		'Chikuawadi',
+		'UBSBC3042'
+	)
+INSERT INTO
+	item
+VALUES
+	(
+		1,
+		1,
+		1,
+		'veg',
+		'Paneer Tikka Masala',
+		450.00
+	)
+INSERT INTO
+	item
+VALUES
+	(
+		2,
+		1,
+		0,
+		'jain',
+		'Vadapav',
+		350.00
+	)
+INSERT INTO
+	item
+VALUES
+	(
+		3,
+		2,
+		1,
+		'veg',
+		'Cheese Burst Pizza',
+		500.00
+	)
+INSERT INTO
+	item
+VALUES
+	(
+		4,
+		2,
+		0,
+		'non-veg',
+		'egg rolls',
+		500.00
+	)
+ALTER TABLE
+	item DROP FOREIGN KEY restaurant_id
+ALTER TABLE
+	item
+ADD
+	FOREIGN KEY (restaurant_id) REFERENCES restaurant(id);
