@@ -449,3 +449,125 @@ ALTER TABLE
 	item
 ADD
 	FOREIGN KEY (restaurant_id) REFERENCES restaurant(id)
+
+SELECT * FROM item
+
+SELECT * FROM item WHERE price BETWEEN 100 AND 400
+
+SELECT * FROM item
+
+SELECT * FROM item WHERE item_name BETWEEN 'Vadapav' AND 'Cheese Burst Pizza' ORDER BY item_name  --DOUBT
+
+SELECT * FROM ticket
+
+UPDATE ticket SET ticket_date=NULL
+
+ALTER TABLE ticket MODIFY ticket_date DATE
+
+UPDATE ticket 
+SET ticket_date = TO_DATE('20-06-2020', 'DD-MM-YYYY')
+WHERE id = 1
+
+UPDATE ticket 
+SET ticket_date = TO_DATE('09-04-2019', 'DD-MM-YYYY')
+WHERE id = 2
+
+UPDATE ticket 
+SET ticket_date = TO_DATE('09-12-2011', 'DD-MM-YYYY')
+WHERE id = 3
+
+INSERT INTO
+	ticket(id, ticket_subject, ticket_description, ticket_status, ticket_type, ticket_date, user_id)
+VALUES
+	(4, 'Food was goodest', 'Awesome', 'completed', 'feedback', TO_DATE('07-11-2016', 'DD-MM-YYYY'), 4)
+
+SELECT * FROM ticket WHERE ticket_date BETWEEN '01-NOV-16' AND '30-JUN-20'
+
+SELECT * FROM item WHERE price NOT BETWEEN 100 AND 400
+
+SELECT * FROM ticket WHERE ticket_date NOT BETWEEN '01-NOV-16' AND '30-JUN-20'
+
+SELECT * FROM restaurant
+
+SELECT * FROM restaurant WHERE NOT pincode = 400022
+
+INSERT INTO
+	restaurant
+VALUES
+	(
+		3,
+		'Olo',
+		'48594851',
+		'olo@something.com',
+		'QAQY723829',
+		'98505905109249',
+		'ExampleCertificate3',
+		'HealthTradeLicense3',
+		'A.V. Road',
+		'Thand nagar',
+		'Banglore',
+		400021,
+		'Karnataka',
+		'Chaiway',
+		'UBC',
+		'UBC93024021',
+		'Dhikuawadi',
+		'UBCBC3042'
+	)
+
+INSERT INTO
+	restaurant
+VALUES
+	(
+		4,
+		'Dolo',
+		'58594851',
+		'dolo@something.com',
+		'DAQY723829',
+		'68505905109249',
+		'ExampleCertificate3',
+		'HealthTradeLicense3',
+		'D.V. Road',
+		'Dhand nagar',
+		'Thane',
+		400021,
+		'Maharashtra',
+		'Dhaiway',
+		'UBD',
+		'UBD93024021',
+		'Ddikuawadi',
+		'UBDBC3042'
+	)
+
+SELECT restaurant_name FROM restaurant WHERE city IN ('Banglore', 'Thane')
+
+SELECT restaurant_name FROM restaurant WHERE city NOT IN ('Banglore', 'Thane')
+
+SELECT * FROM user_detail
+
+SELECT restaurant_name FROM restaurant WHERE city IN ( SELECT city FROM user_detail )
+
+SELECT restaurant_name FROM restaurant WHERE city NOT IN ( SELECT city FROM user_detail )
+
+SELECT * FROM item WHERE price = 350
+
+SELECT * FROM item WHERE price > 350
+
+SELECT * FROM item WHERE price < 450
+
+SELECT * FROM item WHERE price >= 500
+
+SELECT * FROM item WHERE price <= 500
+
+SELECT * FROM item WHERE price <> 450
+
+CREATE TABLE special_item (
+	id integer NOT NULL,
+	restaurant_id integer,
+	bestseller integer,
+	item_type varchar(10),
+	item_name varchar(100),
+	price float,
+	FOREIGN KEY(restaurant_id) REFERENCES restaurant(id),
+	PRIMARY KEY(id)
+) 
