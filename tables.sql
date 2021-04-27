@@ -15,7 +15,9 @@ CREATE TABLE user_detail (
 	landmark varchar(70),
 	is_verified integer,
 	PRIMARY KEY (id)
-) CREATE TABLE ticket (
+) 
+
+CREATE TABLE ticket (
 	id integer NOT NULL,
 	ticket_subject varchar(150),
 	ticket_description varchar(255),
@@ -25,7 +27,9 @@ CREATE TABLE user_detail (
 	user_id integer,
 	PRIMARY KEY(id),
 	FOREIGN KEY(user_id) REFERENCES user_detail(id)
-) CREATE TABLE user_order (
+) 
+
+CREATE TABLE user_order (
 	id integer NOT NULL,
 	user_id integer,
 	order_description varchar(225),
@@ -35,81 +39,105 @@ CREATE TABLE user_detail (
 	total integer,
 	FOREIGN KEY(user_id) REFERENCES user_detail(id)
 )
+
 ALTER TABLE
 	user_order
 ADD
-	PRIMARY KEY (id) CREATE TABLE owner_detail (
-		id integer NOT NULL,
-		fname varchar(50),
-		mname varchar(50),
-		lname varchar(50),
-		contact varchar(15),
-		email varchar(50),
-		PRIMARY KEY(id)
-	) CREATE TABLE restaurant (
-		id integer NOT NULL,
-		rest_name varchar(50),
-		phone varchar(15),
-		email varchar(50),
-		pan varchar(10),
-		fssai_number varchar(14),
-		ec_certificate_no varchar(50),
-		health_trade_licence varchar(50),
-		address_line_1 varchar(255),
-		address_line_2 varchar(255),
-		city varchar(70),
-		pincode integer,
-		state_name varchar(70),
-		landmark varchar(70),
-		bank_name varchar(100),
-		bank_account_no varchar(30),
-		bank_branch varchar(20),
-		ifsc_code varchar(20),
-		PRIMARY KEY(id)
-	) CREATE TABLE restaurant_owners (
-		id integer NOT NULL,
-		owner_id integer,
-		restaurant_id integer,
-		PRIMARY KEY(id),
-		FOREIGN KEY(owner_id) REFERENCES owner_detail(id),
-		FOREIGN KEY(restaurant_id) REFERENCES restaurant(id)
-	) CREATE TABLE item (
-		id integer NOT NULL,
-		restaurant_id integer,
-		bestseller integer,
-		item_type varchar(10),
-		item_name varchar(100),
-		price float,
-		FOREIGN KEY(restaurant_id) REFERENCES restaurant(id),
-		PRIMARY KEY(id)
-	) CREATE TABLE order_items (
-		id integer NOT NULL,
-		order_id integer,
-		item_id integer,
-		quantity integer,
-		FOREIGN KEY(order_id) REFERENCES user_order(id),
-		FOREIGN KEY(item_id) REFERENCES item(id),
-		PRIMARY KEY(id)
-	) CREATE TABLE item_ingredients (
-		id integer NOT NULL,
-		item_id integer,
-		ingredient_name varchar(50),
-		FOREIGN KEY(item_id) REFERENCES item(id),
-		PRIMARY KEY(id)
-	) -- ==========================================
+	PRIMARY KEY (id)
+	
+CREATE TABLE owner_detail (
+	id integer NOT NULL,
+	fname varchar(50),
+	mname varchar(50),
+	lname varchar(50),
+	contact varchar(15),
+	email varchar(50),
+	PRIMARY KEY(id)
+) 
+
+CREATE TABLE restaurant (
+	id integer NOT NULL,
+	rest_name varchar(50),
+	phone varchar(15),
+	email varchar(50),
+	pan varchar(10),
+	fssai_number varchar(14),
+	ec_certificate_no varchar(50),
+	health_trade_licence varchar(50),
+	address_line_1 varchar(255),
+	address_line_2 varchar(255),
+	city varchar(70),
+	pincode integer,
+	state_name varchar(70),
+	landmark varchar(70),
+	bank_name varchar(100),
+	bank_account_no varchar(30),
+	bank_branch varchar(20),
+	ifsc_code varchar(20),
+	PRIMARY KEY(id)
+) 
+
+CREATE TABLE restaurant_owners (
+	id integer NOT NULL,
+	owner_id integer,
+	restaurant_id integer,
+	PRIMARY KEY(id),
+	FOREIGN KEY(owner_id) REFERENCES owner_detail(id),
+	FOREIGN KEY(restaurant_id) REFERENCES restaurant(id)
+)
+	
+CREATE TABLE item (
+	id integer NOT NULL,
+	restaurant_id integer,
+	bestseller integer,
+	item_type varchar(10),
+	item_name varchar(100),
+	price float,
+	FOREIGN KEY(restaurant_id) REFERENCES restaurant(id),
+	PRIMARY KEY(id)
+) 
+	
+CREATE TABLE order_items (
+	id integer NOT NULL,
+	order_id integer,
+	item_id integer,
+	quantity integer,
+	FOREIGN KEY(order_id) REFERENCES user_order(id),
+	FOREIGN KEY(item_id) REFERENCES item(id),
+	PRIMARY KEY(id)
+) 
+	
+CREATE TABLE item_ingredients (
+	id integer NOT NULL,
+	item_id integer,
+	ingredient_name varchar(50),
+	FOREIGN KEY(item_id) REFERENCES item(id),
+	PRIMARY KEY(id)
+) 
+	
+-- ==========================================
 ALTER TABLE
 	restaurant
 MODIFY
-	bank_branch varchar(50) DROP TABLE restaurant_owners CREATE TABLE restaurant_owners (
-		id integer NOT NULL,
-		owner_id integer,
-		restaurant_id integer,
-		PRIMARY KEY(id),
-		FOREIGN KEY(owner_id) REFERENCES owner_detail(id),
-		FOREIGN KEY(restaurant_id) REFERENCES restaurant(id)
-	)
+	bank_branch varchar(50)
+	
+DROP TABLE restaurant_owners 
+	
+CREATE TABLE restaurant_owners (
+	id integer NOT NULL,
+	owner_id integer,
+	restaurant_id integer,
+	PRIMARY KEY(id),
+	FOREIGN KEY(owner_id) REFERENCES owner_detail(id),
+	FOREIGN KEY(restaurant_id) REFERENCES restaurant(id)
+)
+
+
 ALTER TABLE
-	restaurant RENAME COLUMN rest_name TO restaurant_name desc user_detail
+	restaurant RENAME COLUMN rest_name TO restaurant_name
+	
+desc user_detail
+
 INSERT INTO
 	user_detail
 VALUES
@@ -130,6 +158,7 @@ VALUES
 		'Mandir',
 		0
 	)
+
 INSERT INTO
 	user_detail
 VALUES
@@ -150,6 +179,8 @@ VALUES
 		'Mandir',
 		0
 	)
+	
+
 INSERT INTO
 	user_detail
 VALUES
@@ -170,20 +201,25 @@ VALUES
 		'Mandir',
 		0
 	)
+	
+
 INSERT INTO
 	ticket(id, ticket_subject, user_id)
 VALUES
 	(1, 'Food was very Cold', 1)
+	
+
 INSERT
 	ALL INTO ticket(id, ticket_subject, user_id)
 VALUES
-	(2, 'Food was very Bad', 2) INTO ticket(id, ticket_subject, user_id)
+	(2, 'Food was very Bad', 2) 
+INTO ticket(id, ticket_subject, user_id)
 VALUES
 	(3, 'Food was very Cold', 3)
-select
-	*
-from
-	ticket
+	
+select * from ticket
+
+
 UPDATE
 	ticket
 SET
@@ -193,6 +229,8 @@ SET
 	ticket_date = '20210903'
 WHERE
 	user_id = 2
+
+
 UPDATE
 	ticket
 SET
@@ -203,6 +241,8 @@ SET
 	ticket_date = '20210910'
 WHERE
 	user_id = 1
+
+
 UPDATE
 	ticket
 SET
@@ -213,34 +253,47 @@ SET
 	ticket_date = '20210915'
 WHERE
 	user_id = 3
+	
+
 DELETE FROM
 	ticket
 WHERE
 	user_id = 3
+
 select
 	*
 from
 	ticket
+	
+
 DELETE FROM
 	ticket
+	
+
 select
 	*
 from
 	ticket
+	
+
 INSERT INTO
 	ticket(id, ticket_subject, user_id)
 VALUES
 	(1, 'Food was very Cold', 1)
+
 INSERT
 	ALL INTO ticket(id, ticket_subject, user_id)
 VALUES
 	(2, 'Food was very Bad', 2) INTO ticket(id, ticket_subject, user_id)
 VALUES
 	(3, 'Food was very Cold', 3)
+
 select
 	*
 from
 	ticket
+	
+	
 UPDATE
 	ticket
 SET
@@ -250,6 +303,8 @@ SET
 	ticket_date = '20210903'
 WHERE
 	user_id = 2
+
+
 UPDATE
 	ticket
 SET
@@ -260,6 +315,8 @@ SET
 	ticket_date = '20210910'
 WHERE
 	user_id = 1
+	
+
 UPDATE
 	ticket
 SET
@@ -270,16 +327,22 @@ SET
 	ticket_date = '20210915'
 WHERE
 	user_id = 3
+	
 select
 	*
 from
 	ticket
+	
+
 ALTER TABLE
 	ticket DROP PRIMARY KEY
+	
 ALTER TABLE
 	ticket
 ADD
 	CONSTRAINT id PRIMARY KEY (id)
+
+
 INSERT INTO
 	restaurant
 VALUES
@@ -303,6 +366,7 @@ VALUES
 		'Takatakawadi',
 		'PMJC3042'
 	)
+	
 INSERT INTO
 	restaurant
 VALUES
@@ -326,6 +390,8 @@ VALUES
 		'Chikuawadi',
 		'UBSBC3042'
 	)
+	
+
 INSERT INTO
 	item
 VALUES
@@ -337,6 +403,7 @@ VALUES
 		'Paneer Tikka Masala',
 		450.00
 	)
+	
 INSERT INTO
 	item
 VALUES
@@ -348,6 +415,7 @@ VALUES
 		'Vadapav',
 		350.00
 	)
+	
 INSERT INTO
 	item
 VALUES
@@ -359,6 +427,7 @@ VALUES
 		'Cheese Burst Pizza',
 		500.00
 	)
+	
 INSERT INTO
 	item
 VALUES
@@ -370,9 +439,13 @@ VALUES
 		'egg rolls',
 		500.00
 	)
+
+select * from item
+	
 ALTER TABLE
-	item DROP FOREIGN KEY restaurant_id
+	item DROP CONSTRAINT SYS_C0057042864
+	
 ALTER TABLE
 	item
 ADD
-	FOREIGN KEY (restaurant_id) REFERENCES restaurant(id);
+	FOREIGN KEY (restaurant_id) REFERENCES restaurant(id)
