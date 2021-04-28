@@ -229,7 +229,7 @@ SET
 	ticket_date = '20210903'
 WHERE
 	user_id = 2
-
+;
 
 UPDATE
 	ticket
@@ -241,7 +241,7 @@ SET
 	ticket_date = '20210910'
 WHERE
 	user_id = 1
-
+;
 
 UPDATE
 	ticket
@@ -253,33 +253,36 @@ SET
 	ticket_date = '20210915'
 WHERE
 	user_id = 3
-	
+;
 
 DELETE FROM
 	ticket
 WHERE
 	user_id = 3
+;
 
 select
 	*
 from
 	ticket
-	
+
+
+;	
 
 DELETE FROM
 	ticket
 	
-
+;
 select
 	*
 from
 	ticket
-	
+;	
 
 INSERT INTO
 	ticket(id, ticket_subject, user_id)
 VALUES
-	(1, 'Food was very Cold', 1)
+	(1, 'Food was very Cold', 1) ;
 
 INSERT
 	ALL INTO ticket(id, ticket_subject, user_id)
@@ -292,7 +295,7 @@ select
 	*
 from
 	ticket
-	
+	;
 	
 UPDATE
 	ticket
@@ -303,7 +306,7 @@ SET
 	ticket_date = '20210903'
 WHERE
 	user_id = 2
-
+;
 
 UPDATE
 	ticket
@@ -315,7 +318,7 @@ SET
 	ticket_date = '20210910'
 WHERE
 	user_id = 1
-	
+;	
 
 UPDATE
 	ticket
@@ -327,21 +330,21 @@ SET
 	ticket_date = '20210915'
 WHERE
 	user_id = 3
-	
+;	
 select
 	*
 from
 	ticket
-	
+;	
 
 ALTER TABLE
 	ticket DROP PRIMARY KEY
-	
+;	
 ALTER TABLE
 	ticket
 ADD
 	CONSTRAINT id PRIMARY KEY (id)
-
+;
 
 INSERT INTO
 	restaurant
@@ -366,6 +369,8 @@ VALUES
 		'Takatakawadi',
 		'PMJC3042'
 	)
+
+;
 	
 INSERT INTO
 	restaurant
@@ -390,6 +395,9 @@ VALUES
 		'Chikuawadi',
 		'UBSBC3042'
 	)
+
+
+;
 	
 
 INSERT INTO
@@ -403,6 +411,9 @@ VALUES
 		'Paneer Tikka Masala',
 		450.00
 	)
+
+;
+
 	
 INSERT INTO
 	item
@@ -415,6 +426,9 @@ VALUES
 		'Vadapav',
 		350.00
 	)
+
+;
+
 	
 INSERT INTO
 	item
@@ -427,6 +441,9 @@ VALUES
 		'Cheese Burst Pizza',
 		500.00
 	)
+
+;
+
 	
 INSERT INTO
 	item
@@ -440,56 +457,75 @@ VALUES
 		500.00
 	)
 
-select * from item
+;
+
+select * from item ;
 	
 ALTER TABLE
 	item DROP CONSTRAINT SYS_C0057042864
+	
+;
+
+
 	
 ALTER TABLE
 	item
 ADD
 	FOREIGN KEY (restaurant_id) REFERENCES restaurant(id)
 
-SELECT * FROM item
+;
 
-SELECT * FROM item WHERE price BETWEEN 100 AND 400
 
-SELECT * FROM item
+SELECT * FROM item ;
 
-SELECT * FROM item WHERE item_name BETWEEN 'Vadapav' AND 'Cheese Burst Pizza' ORDER BY item_name  --DOUBT
+SELECT * FROM item WHERE price BETWEEN 100 AND 400;
 
-SELECT * FROM ticket
+SELECT * FROM item ;
 
-UPDATE ticket SET ticket_date=NULL
+-- SELECT * FROM item WHERE item_name BETWEEN 'Vadapav' AND 'Cheese Burst Pizza' ORDER BY item_name  DOUBT -- 
 
-ALTER TABLE ticket MODIFY ticket_date DATE
+SELECT * FROM ticket ;
+
+UPDATE ticket SET ticket_date=NULL;
+
+ALTER TABLE ticket MODIFY ticket_date DATE ;
 
 UPDATE ticket 
 SET ticket_date = TO_DATE('20-06-2020', 'DD-MM-YYYY')
 WHERE id = 1
 
+;
+
 UPDATE ticket 
 SET ticket_date = TO_DATE('09-04-2019', 'DD-MM-YYYY')
 WHERE id = 2
 
+;
+
 UPDATE ticket 
 SET ticket_date = TO_DATE('09-12-2011', 'DD-MM-YYYY')
 WHERE id = 3
+
+;
+
 
 INSERT INTO
 	ticket(id, ticket_subject, ticket_description, ticket_status, ticket_type, ticket_date, user_id)
 VALUES
 	(4, 'Food was goodest', 'Awesome', 'completed', 'feedback', TO_DATE('07-11-2016', 'DD-MM-YYYY'), 4)
 
-SELECT * FROM ticket WHERE ticket_date BETWEEN '01-NOV-16' AND '30-JUN-20'
+;
 
-SELECT * FROM item WHERE price NOT BETWEEN 100 AND 400
 
-SELECT * FROM ticket WHERE ticket_date NOT BETWEEN '01-NOV-16' AND '30-JUN-20'
+SELECT * FROM ticket WHERE ticket_date BETWEEN '01-NOV-16' AND '30-JUN-20' ;
 
-SELECT * FROM restaurant
+SELECT * FROM item WHERE price NOT BETWEEN 100 AND 400 ; 
 
-SELECT * FROM restaurant WHERE NOT pincode = 400022
+SELECT * FROM ticket WHERE ticket_date NOT BETWEEN '01-NOV-16' AND '30-JUN-20' ;
+
+SELECT * FROM restaurant ;
+
+SELECT * FROM restaurant WHERE NOT pincode = 400022 ; 
 
 INSERT INTO
 	restaurant
@@ -515,6 +551,8 @@ VALUES
 		'UBCBC3042'
 	)
 
+;
+
 INSERT INTO
 	restaurant
 VALUES
@@ -539,27 +577,29 @@ VALUES
 		'UBDBC3042'
 	)
 
-SELECT restaurant_name FROM restaurant WHERE city IN ('Banglore', 'Thane')
+;
 
-SELECT restaurant_name FROM restaurant WHERE city NOT IN ('Banglore', 'Thane')
+SELECT restaurant_name FROM restaurant WHERE city IN ('Banglore', 'Thane') ;
 
-SELECT * FROM user_detail
+SELECT restaurant_name FROM restaurant WHERE city NOT IN ('Banglore', 'Thane') ; 
 
-SELECT restaurant_name FROM restaurant WHERE city IN ( SELECT city FROM user_detail )
+SELECT * FROM user_detail ; 
 
-SELECT restaurant_name FROM restaurant WHERE city NOT IN ( SELECT city FROM user_detail )
+SELECT restaurant_name FROM restaurant WHERE city IN ( SELECT city FROM user_detail ) ; 
 
-SELECT * FROM item WHERE price = 350
+SELECT restaurant_name FROM restaurant WHERE city NOT IN ( SELECT city FROM user_detail ) ; 
 
-SELECT * FROM item WHERE price > 350
+SELECT * FROM item WHERE price = 350 ; 
 
-SELECT * FROM item WHERE price < 450
+SELECT * FROM item WHERE price > 350 ; 
 
-SELECT * FROM item WHERE price >= 500
+SELECT * FROM item WHERE price < 450 ; 
 
-SELECT * FROM item WHERE price <= 500
+SELECT * FROM item WHERE price >= 500 ; 
 
-SELECT * FROM item WHERE price <> 450
+SELECT * FROM item WHERE price <= 500 ; 
+
+SELECT * FROM item WHERE price <> 450 ; 
 
 CREATE TABLE special_item (
 	id integer NOT NULL,
@@ -570,4 +610,86 @@ CREATE TABLE special_item (
 	price float,
 	FOREIGN KEY(restaurant_id) REFERENCES restaurant(id),
 	PRIMARY KEY(id)
-) 
+) ;
+
+
+INSERT INTO
+	special_item
+VALUES
+	(
+		2,
+		1,
+		0,
+		'jain',
+		'Vadapav',
+		350.00
+	) ;
+
+	
+INSERT INTO
+	special_item
+VALUES
+	(
+		3,
+		2,
+		1,
+		'veg',
+		'Cheese Burst Pizza',
+		500.00
+	) ;
+
+
+INSERT INTO
+	special_item
+VALUES
+	(
+		1,
+		2,
+		1,
+		'veg',
+		'Cheesy Pasta',
+		700.00
+	) ;
+
+
+select * from special_item ;
+
+select * from item ;
+
+select * from special_item UNION select * from item ;
+
+select * from item UNION ALL select * from special_item ;
+
+select * from special_item INTERSECT select * from item ;
+
+select * from special_item MINUS select * from item ;
+
+
+
+SELECT COUNT(item_name), item_type
+FROM item
+GROUP BY item_type;
+
+SELECT COUNT(restaurant_name), city
+FROM restaurant
+GROUP BY city;
+
+
+select * from (select * from item UNION select * from special_item)
+WHERE item_name LIKE 'Chees_%' ;
+
+select * from (select * from item UNION select * from special_item)
+WHERE item_name NOT LIKE 'Chees_%' ;
+
+
+select restaurant_name, address_line_1, address_line_2 from restaurant
+where city LIKE 'Mumbai' OR  city LIKE 'Banglore' ;
+
+
+select concat('Aandmandkhatola', 'Chirag Lulla') from dual; 
+select upper('mumbai') , lower('MuMbaI') from dual;
+select ascii('D'), ascii('C'), length('Chirag & Dheeraj') from dual ; 
+
+select max(price) from item ;
+
+
