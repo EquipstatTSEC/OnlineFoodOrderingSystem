@@ -15,7 +15,7 @@ CREATE TABLE user_detail (
 	landmark varchar(70),
 	is_verified integer,
 	PRIMARY KEY (id)
-) 
+);
 
 CREATE TABLE ticket (
 	id integer NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE ticket (
 	user_id integer,
 	PRIMARY KEY(id),
 	FOREIGN KEY(user_id) REFERENCES user_detail(id)
-) 
+); 
 
 CREATE TABLE user_order (
 	id integer NOT NULL,
@@ -38,12 +38,12 @@ CREATE TABLE user_order (
 	order_status varchar(10),
 	total integer,
 	FOREIGN KEY(user_id) REFERENCES user_detail(id)
-)
+);
 
 ALTER TABLE
 	user_order
 ADD
-	PRIMARY KEY (id)
+	PRIMARY KEY (id);
 	
 CREATE TABLE owner_detail (
 	id integer NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE owner_detail (
 	contact varchar(15),
 	email varchar(50),
 	PRIMARY KEY(id)
-) 
+);
 
 CREATE TABLE restaurant (
 	id integer NOT NULL,
@@ -75,7 +75,7 @@ CREATE TABLE restaurant (
 	bank_branch varchar(20),
 	ifsc_code varchar(20),
 	PRIMARY KEY(id)
-) 
+) ;
 
 CREATE TABLE restaurant_owners (
 	id integer NOT NULL,
@@ -84,7 +84,7 @@ CREATE TABLE restaurant_owners (
 	PRIMARY KEY(id),
 	FOREIGN KEY(owner_id) REFERENCES owner_detail(id),
 	FOREIGN KEY(restaurant_id) REFERENCES restaurant(id)
-)
+);
 	
 CREATE TABLE item (
 	id integer NOT NULL,
@@ -95,7 +95,7 @@ CREATE TABLE item (
 	price float,
 	FOREIGN KEY(restaurant_id) REFERENCES restaurant(id),
 	PRIMARY KEY(id)
-) 
+) ;
 	
 CREATE TABLE order_items (
 	id integer NOT NULL,
@@ -105,7 +105,7 @@ CREATE TABLE order_items (
 	FOREIGN KEY(order_id) REFERENCES user_order(id),
 	FOREIGN KEY(item_id) REFERENCES item(id),
 	PRIMARY KEY(id)
-) 
+) ;
 	
 CREATE TABLE item_ingredients (
 	id integer NOT NULL,
@@ -113,15 +113,15 @@ CREATE TABLE item_ingredients (
 	ingredient_name varchar(50),
 	FOREIGN KEY(item_id) REFERENCES item(id),
 	PRIMARY KEY(id)
-) 
+) ;
 	
 -- ==========================================
 ALTER TABLE
 	restaurant
 MODIFY
-	bank_branch varchar(50)
+	bank_branch varchar(50);
 	
-DROP TABLE restaurant_owners 
+DROP TABLE restaurant_owners; 
 	
 CREATE TABLE restaurant_owners (
 	id integer NOT NULL,
@@ -130,13 +130,13 @@ CREATE TABLE restaurant_owners (
 	PRIMARY KEY(id),
 	FOREIGN KEY(owner_id) REFERENCES owner_detail(id),
 	FOREIGN KEY(restaurant_id) REFERENCES restaurant(id)
-)
+);
 
 
 ALTER TABLE
-	restaurant RENAME COLUMN rest_name TO restaurant_name
+	restaurant RENAME COLUMN rest_name TO restaurant_name;
 	
-desc user_detail
+desc user_detail;
 
 INSERT INTO
 	user_detail
@@ -157,7 +157,7 @@ VALUES
 		'Maharashtra',
 		'Mandir',
 		0
-	)
+	);
 
 INSERT INTO
 	user_detail
@@ -178,7 +178,7 @@ VALUES
 		'Maharashtra',
 		'Mandir',
 		0
-	)
+	);
 	
 
 INSERT INTO
@@ -200,13 +200,13 @@ VALUES
 		'Maharashtra',
 		'Mandir',
 		0
-	)
+	);
 	
 
 INSERT INTO
 	ticket(id, ticket_subject, user_id)
 VALUES
-	(1, 'Food was very Cold', 1)
+	(1, 'Food was very Cold', 1);
 	
 
 INSERT
@@ -215,9 +215,9 @@ VALUES
 	(2, 'Food was very Bad', 2) 
 INTO ticket(id, ticket_subject, user_id)
 VALUES
-	(3, 'Food was very Cold', 3)
+	(3, 'Food was very Cold', 3);
 	
-select * from ticket
+select * from ticket;
 
 
 UPDATE
@@ -302,8 +302,7 @@ UPDATE
 SET
 	ticket_description = 'late delivery',
 	ticket_status = 'pending',
-	ticket_type = 'greivance',
-	ticket_date = '20210903'
+	ticket_type = 'greivance'
 WHERE
 	user_id = 2
 ;
@@ -314,8 +313,7 @@ SET
 	ticket_subject = 'Food was very good',
 	ticket_description = 'fast delivery',
 	ticket_status = 'complete',
-	ticket_type = 'feedback',
-	ticket_date = '20210910'
+	ticket_type = 'feedback'
 WHERE
 	user_id = 1
 ;	
@@ -326,8 +324,7 @@ SET
 	ticket_subject = 'packing was very bad',
 	ticket_description = 'packing left open',
 	ticket_status = 'pending',
-	ticket_type = 'greivance',
-	ticket_date = '20210915'
+	ticket_type = 'greivance'
 WHERE
 	user_id = 3
 ;	
@@ -509,14 +506,6 @@ WHERE id = 3
 ;
 
 
-INSERT INTO
-	ticket(id, ticket_subject, ticket_description, ticket_status, ticket_type, ticket_date, user_id)
-VALUES
-	(4, 'Food was goodest', 'Awesome', 'completed', 'feedback', TO_DATE('07-11-2016', 'DD-MM-YYYY'), 4)
-
-;
-
-
 SELECT * FROM ticket WHERE ticket_date BETWEEN '01-NOV-16' AND '30-JUN-20' ;
 
 SELECT * FROM item WHERE price NOT BETWEEN 100 AND 400 ; 
@@ -692,4 +681,160 @@ select ascii('D'), ascii('C'), length('Chirag & Dheeraj') from dual ;
 
 select max(price) from item ;
 
+INSERT INTO
+	user_detail
+VALUES
+	(
+		4,
+		'Aaayush',
+		'XYZ',
+		'Wadhwani',
+		'KingAA',
+		'8888888888',
+		'aayushwadhwani99@gmail.com',
+		'EasyPassword300',
+		'Home, addr 1',
+		'Home, addr 2',
+		'Mumbai',
+		421000,
+		'Maharashtra',
+		'Mandir',
+		0
+	);
 
+INSERT INTO
+	ticket(id, ticket_subject, ticket_description, ticket_status, ticket_type, ticket_date, user_id)
+VALUES
+	(4, 'Food was goodest', 'Awesome', 'completed', 'feedback', TO_DATE('07-11-2016', 'DD-MM-YYYY'), 4)
+
+;
+
+select * from user_detail;
+select * from ticket;
+select * from user_order;
+select * from restaurant;
+select * from owner_detail;
+select * from restaurant_owners;
+select * from item;
+select * from order_items;
+select * from item_ingredients;
+
+select username from user_detail
+where id in (
+    select user_id from ticket 
+    where ticket_status = 'pending'
+);
+
+INSERT INTO
+	item
+VALUES
+	(
+		7,
+		3,
+		0,
+		'veg',
+		'Paneer Tikka Masala',
+		800.00
+	);
+
+INSERT INTO
+	item
+VALUES
+	(
+		5,
+		3,
+		1,
+		'jain',
+		'Vadapav',
+		100.00
+	);
+
+INSERT INTO
+	item
+VALUES
+	(
+		6,
+		4,
+		0,
+		'veg',
+		'Cheese Burst Pizza',
+		670.00
+	);
+	
+select restaurant_name, city from restaurant
+where id in ( 
+	select restaurant_id from item
+	where bestseller = 1
+) ;
+
+select city from user_detail
+where user_detail.city in (
+	select restaurant.city from restaurant
+	where id in ( 
+		select restaurant_id from item 
+		where bestseller = 1
+	)
+);
+
+select restaurant_name from restaurant
+where restaurant.city in (
+	select city from user_detail
+	where user_detail.city in (
+		select restaurant.city from restaurant
+		where id in ( 
+			select restaurant_id from item
+			where bestseller = 1
+		)
+	)
+);
+
+select id from restaurant
+where restaurant.city in (
+	select user_detail.city from user_detail
+	where user_detail.city in (
+		select restaurant.city from restaurant
+		where id in ( 
+			select restaurant_id from item
+			where bestseller = 1
+		)
+	)
+);
+
+select item_name, price from item
+where restaurant_id in (
+	select id from restaurant
+	where restaurant.city in (
+		select user_detail.city from user_detail
+		where user_detail.city in (
+			select restaurant.city from restaurant
+			where id in ( 
+				select restaurant_id from item
+			)
+		)
+	)
+) and item.bestseller = 1;
+
+select * from restaurant;
+select * from item;
+select * from user_detail;
+
+INSERT INTO
+	user_detail
+VALUES
+	(
+		5,
+		'Harsh',
+		'Gaurang',
+		'Kapadia',
+		'Hersheys',
+		'9999999999',
+		'hersheys@gmail.com',
+		'EasyPassword101',
+		'Home, addr 1',
+		'Home, addr 2',
+		'Thane',
+		421009,
+		'Maharashtra',
+		'Mandir',
+		0
+	);
