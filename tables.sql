@@ -225,8 +225,7 @@ UPDATE
 SET
 	ticket_description = 'late delivery',
 	ticket_status = 'pending',
-	ticket_type = 'greivance',
-	ticket_date = '20210903'
+	ticket_type = 'greivance'
 WHERE
 	user_id = 2
 ;
@@ -237,8 +236,7 @@ SET
 	ticket_subject = 'Food was very good',
 	ticket_description = 'fast delivery',
 	ticket_status = 'complete',
-	ticket_type = 'feedback',
-	ticket_date = '20210910'
+	ticket_type = 'feedback'
 WHERE
 	user_id = 1
 ;
@@ -249,8 +247,7 @@ SET
 	ticket_subject = 'packing was very bad',
 	ticket_description = 'packing left open',
 	ticket_status = 'pending',
-	ticket_type = 'greivance',
-	ticket_date = '20210915'
+	ticket_type = 'greivance'
 WHERE
 	user_id = 3
 ;
@@ -838,3 +835,123 @@ VALUES
 		'Mandir',
 		0
 	);
+
+insert 
+into user_order(id, user_id, order_description, payment_type, order_status) 
+values (1, 1, 'Get it delivered sharp 10 am', 'COD', 'pending');
+
+insert
+into user_order(id, user_id, order_description, payment_type, order_status) 
+values (2, 1, 'Give extra onion packets', 'Net Banking', 'processing');
+
+insert
+into user_order(id, user_id, order_description, payment_type, order_status) 
+values (3, 2, 'Give extra colddrink', 'COD', 'pending');
+
+insert
+into user_order(id, user_id, order_description, payment_type, order_status) 
+values (4, 3, 'Give extra schezwan packets', 'Net Banking', 'complete');
+
+insert
+into user_order(id, user_id, order_description, payment_type, order_status) 
+values (5, 4, 'Give extra salad packets', 'COD', 'processing');
+
+insert
+into user_order(id, user_id, order_description, payment_type, order_status) 
+values (6, 4, 'Give extra burritos packets', 'Net Banking', 'complete');
+
+select * from user_order;
+
+alter table user_order MODIFY order_date DATE;
+
+update user_order 
+set order_date = TO_DATE('20-06-2020', 'DD-MM-YYYY')
+where id = 1;
+
+update user_order 
+set order_date = TO_DATE('21-06-2020', 'DD-MM-YYYY')
+where id = 2;
+
+update user_order 
+set order_date = TO_DATE('22-06-2020', 'DD-MM-YYYY')
+where id = 3;
+
+update user_order 
+set order_date = TO_DATE('23-06-2020', 'DD-MM-YYYY')
+where id = 4;
+
+update user_order 
+set order_date = TO_DATE('24-06-2020', 'DD-MM-YYYY')
+where id = 5;
+
+update user_order 
+set order_date = TO_DATE('25-06-2020', 'DD-MM-YYYY')
+where id = 6;
+
+alter table user_order drop column total;
+
+insert 
+into order_items 
+values (1, 1, 7, 2);
+
+insert 
+into order_items 
+values (2, 1, 4, 2);
+
+insert 
+into order_items 
+values (3, 2, 5, 5);
+
+insert 
+into order_items 
+values (4, 3, 3, 1);
+
+insert 
+into order_items 
+values (5, 4, 1, 2);
+
+insert 
+into order_items 
+values (6, 5, 4, 2);
+
+insert 
+into order_items 
+values (5, 6, 1, 2);
+
+
+select order_date 
+from user_order
+where order_id in (
+	select order_id 
+	from order_items
+	where item_id = 1
+);
+
+
+select order_status 
+from user_order
+where id in (
+	select order_id
+	from order_items
+	where item_id in (
+		select id 
+		from item
+		where item_type = 'non-veg'
+	)
+);
+
+select item_name
+from item
+where id in (
+	select item_id 
+	from order_items
+	where order_id in(
+		select id
+		from user_order
+		where user_id = 1
+	)
+);
+
+select * from user_order;
+select * from item;
+select * from order_items;
