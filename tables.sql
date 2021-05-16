@@ -456,7 +456,7 @@ VALUES
 select * from item ;
 	
 ALTER TABLE
-	item DROP CONSTRAINT SYS_C0057042864
+	item DROP CONSTRAINT SYS_C0058481679
 	
 ;
 
@@ -716,6 +716,8 @@ select * from item;
 select * from order_items;
 select * from item_ingredients;
 
+
+-- 1. Select usernames of users whose ticket are pending to be responded.
 select username from user_detail
 where id in (
     select user_id from ticket 
@@ -757,13 +759,16 @@ VALUES
 		'Cheese Burst Pizza',
 		670.00
 	);
-	
+
+
+-- 2. Select restaurants name and location (city) where there are bestseller items
 select restaurant_name, city from restaurant
 where id in ( 
 	select restaurant_id from item
 	where bestseller = 1
 ) ;
 
+-- 3. Select user's location according to location of restaurants having bestseller
 select city from user_detail
 where user_detail.city in (
 	select restaurant.city from restaurant
@@ -773,6 +778,7 @@ where user_detail.city in (
 	)
 );
 
+-- 4. Select name of restaurants from the location of users got from previous query
 select restaurant_name from restaurant
 where restaurant.city in (
 	select city from user_detail
@@ -785,6 +791,7 @@ where restaurant.city in (
 	)
 );
 
+-- 5. Select restaurant id from the location of users got from previous to previous query
 select id from restaurant
 where restaurant.city in (
 	select user_detail.city from user_detail
@@ -797,6 +804,7 @@ where restaurant.city in (
 	)
 );
 
+-- 6. Select item name and price for user which are bestseller and near to users location's restaurant.
 select item_name, price from item
 where restaurant_id in (
 	select id from restaurant
@@ -918,7 +926,7 @@ insert
 into order_items 
 values (5, 6, 1, 2);
 
-
+-- 7. Select order date of order when an item of id 1 was ordered.
 select order_date 
 from user_order
 where order_id in (
@@ -927,7 +935,7 @@ where order_id in (
 	where item_id = 1
 );
 
-
+-- 8. Select order status of those orders having non-veg items.
 select order_status 
 from user_order
 where id in (
@@ -940,6 +948,7 @@ where id in (
 	)
 );
 
+-- 9. Select all items ordered by user having id 1.
 select item_name
 from item
 where id in (
@@ -949,9 +958,26 @@ where id in (
 		select id
 		from user_order
 		where user_id = 1
-	)
+	) 
 );
+
+-- 10. Select all items ordered by user having id 1 and have ordered on 20-JUN-20.
+select item_name
+from item
+where id in (
+	select item_id 
+	from order_items
+	where order_id in(
+		select id
+		from user_order
+		where user_id = 1 and order_date = '20-JUN-20'
+	) 
+);
+
+
 
 select * from user_order;
 select * from item;
 select * from order_items;
+
+-- Complex Queries.
