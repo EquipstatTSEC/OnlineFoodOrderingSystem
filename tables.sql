@@ -981,3 +981,124 @@ select * from item;
 select * from order_items;
 
 -- Complex Queries.
+
+
+
+-- Joins
+-- Inner join
+-- 1. Prepare a report of users' tickets.
+select user_detail.fname, user_detail.lname, user_detail.email,
+		ticket.ticket_subject, ticket.ticket_status, ticket.ticket_date
+from user_detail 
+inner join ticket 
+on user_detail.id = ticket.user_id;
+
+-- 2. Prepare a report of users' orders.
+select user_detail.fname, user_detail.address_line_1, user_detail.address_line_2,
+		user_order.order_description, user_order.order_status
+from user_detail
+inner join user_order 
+on user_detail.id = user_order.user_id;
+
+INSERT INTO
+	user_detail
+VALUES
+	(
+		6,
+		'Kunal',
+		'Lachman',
+		'Budhrani',
+		'Kunu',
+		'1234567812',
+		'kunu@gmail.com',
+		'EasyPassword199',
+		'Home, addr 1',
+		'Home, addr 2',
+		'Banglore',
+		521021,
+		'Karnataka',
+		'Mandir',
+		1
+	);
+
+INSERT INTO
+	user_detail
+VALUES
+	(
+		7,
+		'Varun',
+		'XYZ',
+		'Mamtora',
+		'VarunM',
+		'1234567890',
+		'varunm@gmail.com',
+		'EasyPassword200',
+		'Home, addr 1',
+		'Home, addr 2',
+		'Chennai',
+		521021,
+		'Tamil Nadu',
+		'Mandir',
+		1
+	);
+
+-- Left join
+-- 1. Prepare a report of users and their orders along with users who haven't ordered since they have registered.
+select user_detail.fname, user_detail.address_line_1, user_detail.address_line_2,
+		user_order.order_description, user_order.order_status
+from user_detail
+left join user_order 
+on user_detail.id = user_order.user_id;
+
+-- 2. Prepare a report of users and their ticket along with users who haven't submitted any ticket since they have registered.
+select user_detail.fname, user_detail.lname, user_detail.email,
+		ticket.ticket_subject, ticket.ticket_status, ticket.ticket_date
+from user_detail 
+left join ticket 
+on user_detail.id = ticket.user_id;
+
+-- Right join
+-- 1. Reverse of the first query in left join.
+select user_detail.fname, user_detail.address_line_1, user_detail.address_line_2,
+		user_order.order_description, user_order.order_status
+from user_order 
+right join user_detail
+on user_detail.id = user_order.user_id;
+
+--2. Reverse of the second query in left join.
+select user_detail.fname, user_detail.lname, user_detail.email,
+		ticket.ticket_subject, ticket.ticket_status, ticket.ticket_date
+from ticket 
+right join user_detail
+on user_detail.id = ticket.user_id;
+
+-- Full join
+
+select
+    user_detail.id,
+    user_detail.fname,
+    user_detail.lname,
+    user_detail.email,
+    user_order.id,
+    user_order.order_date,
+    user_order.order_status,
+    item.id,
+    item.item_name,
+    item.item_price 
+from
+    (
+        user_detail 
+        full join
+            (
+                user_order 
+                full join
+                    (
+						order_items 
+                        full join
+                            item 
+                            on order_items.item_id = item.id 
+					)
+                            on user_order.id = order_items.order_id 
+                    )
+                    on user_detail.id = user_order.user_id 
+    );
