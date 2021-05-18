@@ -1465,3 +1465,164 @@ from
             on user_detail.id = user_order.user_id 
     )
 ;
+
+
+-- views
+
+select * from restaurant;
+
+-- create a view of restaurant public details for a website that is to be displayed for user to know about restaurant.
+create view restaurant_public_details as
+select restaurant.restaurant_name, restaurant.phone, restaurant.email, restaurant.address_line_1, restaurant.address_line_2, restaurant.landmark
+from restaurant;
+
+select * from restaurant_public_details;
+
+create or replace view restaurant_public_details as
+select restaurant.id, restaurant.restaurant_name, restaurant.phone, restaurant.email, restaurant.address_line_1, restaurant.address_line_2, restaurant.landmark
+from restaurant;
+
+
+INSERT INTO
+    owner_detail
+VALUES
+    (
+        1,
+        'ram',
+        'gangaram',
+        'chaudary',
+        '9911223344',
+        'restaurant1@something.com'
+    )
+;
+
+-- select all types of users on this platform (ownners of restaurants and users who buy stuff through our platform)
+create view all_types_users as
+select concat('u',user_detail.id) as id, user_detail.fname, user_detail.lname, user_detail.email, 'user' as status
+from user_detail
+union
+select concat('o', owner_detail.id) as id, owner_detail.fname, owner_detail.lname, owner_detail.email, 'restaurant-owner' as status
+from owner_detail;
+
+select * from all_types_users;
+
+create or replace view all_types_users as
+select concat('u',user_detail.id) as id, user_detail.fname, user_detail.lname, user_detail.email, user_detail.contact, 'user' as status
+from user_detail
+union
+select concat('o', owner_detail.id) as id, owner_detail.fname, owner_detail.lname, owner_detail.email, owner_detail.contact, 'restaurant-owner' as status
+from owner_detail;
+
+-- select all user and restaurant combinations for analysis.
+
+create view user_rest_pairs as
+select user_detail.id as user_id, restaurant.id as rest_id, restaurant.restaurant_name
+from user_detail
+cross join restaurant;
+
+select * from user_rest_pairs;
+
+drop view user_rest_pairs;
+
+drop view user_rest_pairs;
+
+create table order_notification (
+    noti varchar(100)
+);
+
+drop trigger notify;
+
+create table order_notification (
+    noti varchar(100)
+)
+
+drop trigger notify;
+ -- 1.
+create trigger notify
+before insert
+on user_order
+for each row 
+begin
+    insert into order_notification values ('new order arrived');
+end;
+
+insert into
+    user_order
+values
+    (
+        8,
+        3,
+        'Give extra chutney packets',
+        TO_DATE('25-06-2019', 'DD-MM-YYYY'),
+        'COD',
+        'pending'
+    )
+;
+
+select * from order_notification;
+
+    -- 2.
+
+create view user_detail_view
+select * from user_detail;
+
+create or replace trigger dupli_user_insert
+instead of insert on user_detail_view
+declare dupli_user EXCEPTION;
+PRAGMA EXCEPTION_INIT (dupli_user, -00001);
+begin 
+    insert into user_detail values 
+    (
+    :new.id, 
+    :new.fname,
+    :new.mname,
+    :new.lname,
+    :new.username,
+    :new.contact,
+    :new.email,
+    :new.passw,
+    :new.address_line_1,
+    :new.address_line_2,
+    :new.city,
+    :new.pincode,
+    :new.state_name,
+    :new.landmark,
+    :new.is_verified
+    );
+exception
+    when dupli_user then
+        RAISE_APPLICATION_ERROR (
+            num=> -20107,
+            msg=>'duplicate user alert'
+        );
+end dupli_user_insert;
+
+INSERT INTO
+    user_detail_view
+VALUES
+    (
+        2, 'Chirag', 'Vinodkumar', 'Lulla', 'chiraglulla', '8329266084', 'lullachirag239@gmail.com', 'EasyPassword202', 'Home, addr 1', 'Home, addr 2', 'Mumbai', 421003, 'Maharashtra', 'Mandir', 0 
+    )
+;
+
+create table user_notification (
+    noti varchar(100)
+);
+
+create trigger notify_new_user
+after insert
+on user_detail
+for each row 
+begin
+    insert into user_notification values ('new user arrived');
+end;
+
+INSERT INTO
+    user_detail
+VALUES
+    (
+        8, 'Chirag', 'Vinodkumar', 'Lulla', 'chiraglulla', '8329266084', 'lullachirag239@gmail.com', 'EasyPassword202', 'Home, addr 1', 'Home, addr 2', 'Mumbai', 421003, 'Maharashtra', 'Mandir', 0 
+    )
+;
+
+select * from user_notification;
